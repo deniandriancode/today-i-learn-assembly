@@ -1,0 +1,15 @@
+	section .data
+	msg	db "Hello, World!", 0x0a
+	
+	section .text
+	global _start
+_start:
+	mov	ecx, msg
+	mov 	edx, 14
+	mov 	ebx, 1
+	mov	eax, 4
+	int 	0x80
+
+	mov	ebx, 0		; return zero error
+	mov	eax, 1		; invoke SYS_EXIT (kernel opcode 1)
+	int 	0x80
